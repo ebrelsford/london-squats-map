@@ -66,6 +66,10 @@ a:hover {
     font-weight: bold;
 }
 
+#add-a-squat ul {
+    list-style: disc;
+    padding-left: 40px;
+}
 
 /*
  * leaflet
