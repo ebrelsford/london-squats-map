@@ -33,6 +33,20 @@ a:hover {
  * content
  */
 
+#main-content {
+    height: 500px;
+}
+
+#right {
+    height: 100%;
+}
+
+#right .tab-content {
+    max-height: 90%;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
 #map {
     height: 500px;
     width: 100%;
