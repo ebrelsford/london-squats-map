@@ -47,6 +47,11 @@ a:hover {
     overflow-y: auto;
 }
 
+#right p {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
 #map {
     height: 500px;
     width: 100%;
