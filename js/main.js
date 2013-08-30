@@ -152,11 +152,11 @@ function addHaveYouSeenList() {
 }
 
 Handlebars.registerHelper('urlize', function (text) {
-    var urlPattern = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+    var urlPattern = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([!\/\w\.-]*)*\/?/g;
     var toUrl = function (match) {
         return '<a href="' + match + '" target="_blank">' + match + '</a>';
     };
-    result = text.replace(urlPattern, toUrl, 'gi');
+    result = text.replace(urlPattern, toUrl);
     return new Handlebars.SafeString(result);
 });
 
