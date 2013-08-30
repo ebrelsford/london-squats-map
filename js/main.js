@@ -151,6 +151,15 @@ function addHaveYouSeenList() {
     });
 }
 
+Handlebars.registerHelper('urlize', function (text) {
+    var urlPattern = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+    var toUrl = function (match) {
+        return '<a href="' + match + '" target="_blank">' + match + '</a>';
+    };
+    result = text.replace(urlPattern, toUrl, 'gi');
+    return new Handlebars.SafeString(result);
+});
+
 $(document).ready(function () {
     $('#map').freespacemap({});
     addHaveYouSeenList();
