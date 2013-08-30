@@ -78,28 +78,6 @@
                     },
 
                 }).addTo(instance.map);
-
-                var sortedFeatures = _.sortBy(data.features, function (f) {
-                    return f.properties.name_of_space;
-                });
-
-                var source = $('#list-template').html();
-                var template = Handlebars.compile(source);
-                $('#list').html(template({
-                    places: sortedFeatures,
-                }));
-
-                $('.list-place a').click(function (e) {
-                    e.preventDefault();
-                    var clicked_id = $(this).data('cartodbid');
-                    var clicked_layer = _.find(instance.map._layers, function (layer) {
-                        if (!layer.feature) return false;
-                        return layer.feature.properties.cartodb_id === clicked_id;
-                    });
-
-                    clicked_layer.fire('click');
-                    return false;
-                });
             });
 
         },
@@ -158,6 +136,22 @@
 
 })(window, jQuery);
 
+function addHaveYouSeenList() {
+    var url = 'http://newagebeverages.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM evicted_squats_london WHERE needs_more_info = true';
+    $.getJSON(url, function (data) {
+        var sortedFeatures = _.sortBy(data.features, function (f) {
+            return f.properties.name_of_squat;
+        });
+
+        var source = $('#list-template').html();
+        var template = Handlebars.compile(source);
+        $('#have-you-seen-list-wrapper').html(template({
+            places: sortedFeatures,
+        }));
+    });
+}
+
 $(document).ready(function () {
     $('#map').freespacemap({});
+    addHaveYouSeenList();
 });

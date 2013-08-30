@@ -22,17 +22,30 @@
         <script src="js/main.js"></script>
 
         <script id="list-template" type="text/x-handlebars-template">
-            <ul>
-                {{#each places}}
-                {{#with this.properties}}
-                {{#if name_of_space}}
-                <li class="list-place">
-                    <a href="#" data-cartodbid="{{cartodb_id}}">{{name_of_space}}, {{address}}</a>
-                </li>
-                {{/if}}
-                {{/with}}
-                {{/each}}
-            </ul>
+            <div class="have-you-seen-list" style="display: table;">
+                <div class="heading" style="display: table-header-group;">
+                    <div style="display: table-cell;">
+                        name
+                    </div>
+                    <div style="display: table-cell;">
+                        address
+                    </div>
+                </div>
+                <div style="display: table-row-group;">
+                    {{#each places}}
+                        <div style="display: table-row;">
+                            {{#with this.properties}}
+                                <div style="display: table-cell;">
+                                    {{name_of_squat}}
+                                </div>
+                                <div style="display: table-cell;">
+                                    {{address}}
+                                </div>
+                            {{/with}}
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
         </script>
 
         <script id="popup-template" type="text/x-handlebars-template">
@@ -169,6 +182,7 @@
                                 londonsquatsarchive@riseup.net
                             </a>
                         </p>
+                        <div id="have-you-seen-list-wrapper"></div>
                     </div>
                 </div>
             </div>
