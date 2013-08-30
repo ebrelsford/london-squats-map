@@ -134,3 +134,12 @@ a:hover {
     overflow-x: auto;
     overflow-y: auto;
 }
+
+
+/*
+ * Bootstrap
+ */
+
+.tab-pane {
+    padding: 20px;
+}
