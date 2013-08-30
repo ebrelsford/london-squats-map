@@ -9,14 +9,16 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="js/lib/underscore-min.js"></script>
         <script src="js/lib/handlebars.js"></script>
+        <script src="js/lib/bootstrap/js/bootstrap.min.js"></script>
 
-        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="js/lib/bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
         <!--[if lte IE 8]>
             <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
         <![endif]-->
-        <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+        <link rel="stylesheet" href="css/style.css" />
 
+        <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
         <script src="js/main.js"></script>
 
         <script id="list-template" type="text/x-handlebars-template">
@@ -117,14 +119,60 @@
     <body>
         <div id="header">
             <h1>London Squats Map</h1>
-            <p>The London Squats Archive is an historical Wiki project to map evicted Squats in London. With your help we aim to create an open source visual tool to help us better understand the history of squatting culture in London.</p>
         </div>
 
-        <div class="grid grid-3-4">
-            <div id="map"></div>
+        <div class="row">
+            <div class="col-md-7">
+                <div id="map"></div>
+            </div>
+            <div class="col-md-5">
+                <ul class="nav nav-tabs">
+                    <li>
+                        <a href="#home" data-toggle="tab">Home</a>
+                    </li>
+                    <li>
+                        <a href="#add-a-squat" data-toggle="tab">Add a squat</a>
+                    </li>
+                    <li>
+                        <a href="#have-you-seen" data-toggle="tab">Have you seen this squat?</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="home">
+                        <p>
+                            The London Squats Archive is an historical Wiki 
+                            project to map evicted Squats in London. With your 
+                            help we aim to create an open source visual tool to
+                            help us better understand the history of squatting 
+                            culture in London.
+                        </p>
+                    </div>
+
+                    <div class="tab-pane" id="add-a-squat">
+                        <p>
+                            To add a squat, please send the address and 
+                            additional information to 
+                            <a href="mailto:londonsquatsarchive@riseup.net">
+                                londonsquatsarchive@riseup.net
+                            </a>
+                        </p>
+                    </div>
+
+                    <div class="tab-pane" id="have-you-seen">
+                        <p>
+                            We have some information on these squats, but we 
+                            still need their street numbers in order to add them
+                            to the map. If you know the history/former location
+                            of these projects, please email the information to: 
+                            <a href="mailto:londonsquatsarchive@riseup.net">
+                                londonsquatsarchive@riseup.net
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="grid grid-1-4"></div>
-        <div class="clear"></div>
 
         <div id="list"></div>
 
