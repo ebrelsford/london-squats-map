@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+
+    <head>
+        <title>London Squats Map</title>
+
+        <meta charset="utf-8">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="js/lib/underscore-min.js"></script>
+        <script src="js/lib/handlebars.js"></script>
+
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+        <!--[if lte IE 8]>
+            <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+        <![endif]-->
+        <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+
+        <script src="js/main.js"></script>
+
+        <script id="list-template" type="text/x-handlebars-template">
+            <ul>
+                {{#each places}}
+                {{#with this.properties}}
+                {{#if name_of_space}}
+                <li class="list-place">
+                    <a href="#" data-cartodbid="{{cartodb_id}}">{{name_of_space}}, {{address}}</a>
+                </li>
+                {{/if}}
+                {{/with}}
+                {{/each}}
+            </ul>
+        </script>
+
+
+        <script id="popup-template" type="text/x-handlebars-template">
+            <div class="place-popup-content">
+                {{#with place.properties}}
+                    <h2>{{name_of_squat}}</h2>
+
+                    <p>{{address}}</p>
+
+                    {{#if duration}}
+                        <p>duration: {{duration}}</p>
+                    {{/if}}
+
+                    {{#if ended}}
+                        <p>ended: {{ended}}</p>
+                    {{/if}}
+
+                    {{#if housing}}
+                        <p>housing: {{housing}}</p>
+                    {{/if}}
+
+                    {{#if legal_illegal}}
+                        <p>legal/illegal: {{legal_illegal}}</p>
+                    {{/if}}
+
+                    {{#if more_info}}
+                        <p>more info: {{more_info}}</p>
+                    {{/if}}
+
+                    {{#if negotiations}}
+                        <p>negotiations: {{negotiations}}</p>
+                    {{/if}}
+
+                    {{#if occupied}}
+                        <p>occupied: {{occupied}}</p>
+                    {{/if}}
+
+                    {{#if organized_groups}}
+                        <p>organized groups: {{organized_groups}}</p>
+                    {{/if}}
+
+                    {{#if ownership}}
+                        <p>ownership: {{ownership}}</p>
+                    {{/if}}
+
+                    {{#if photos}}
+                        <p>photos: {{photos}}</p>
+                    {{/if}}
+
+                    {{#if political_network}}
+                        <p>political network: {{political_network}}</p>
+                    {{/if}}
+
+                    {{#if self_definition}}
+                        <p>self definition: {{self_definition}}</p>
+                    {{/if}}
+
+                    {{#if time_empty}}
+                        <p>time empty: {{time_empty}}</p>
+                    {{/if}}
+
+                    {{#if type_of_building}}
+                        <p>type of building: {{type_of_building}}</p>
+                    {{/if}}
+
+                    {{#if type_of_evicted}}
+                        <p>type of evicted: {{type_of_evicted}}</p>
+                    {{/if}}
+
+                    {{#if urban_rural}}
+                        <p>urban/rural: {{urban_rural}}</p>
+                    {{/if}}
+
+                    {{#if use_after_eviction}}
+                        <p>use after eviction: {{use_after_eviction}}</p>
+                    {{/if}}
+
+                {{/with}}
+            </div>
+        </script>
+
+        <script></script>
+
+    </head>
+
+    <body>
+        <div id="header">
+            <h1>London Squats Map</h1>
+            <p>The London Squats Archive is an historical Wiki project to map evicted Squats in London. With your help we aim to create an open source visual tool to help us better understand the history of squatting culture in London.</p>
+        </div>
+
+        <div class="grid grid-3-4">
+            <div id="map"></div>
+        </div>
+        <div class="grid grid-1-4">
+        </div>
+        <div class="clear"></div>
+
+        <div id="list"></div>
+
+    </body>
+
+</html>

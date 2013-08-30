@@ -1,0 +1,136 @@
+/*
+ * reset
+ */
+
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+    
+body {
+    background-color: white;
+    font-family: Helvetica;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    border-bottom: 1px solid white;
+    color: black !important;
+    text-decoration: none !important;
+}
+
+a:hover {
+    color: #F04848 !important;
+    border-bottom: 1px dashed #F04848 !important;
+}
+
+
+/*
+ * layout
+ */
+
+.grid {
+    box-sizing: padding-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    float: left;
+}
+
+@media (min-width: 768px) {
+    .grid-1-4 {
+        width: 25%;
+    }
+    .grid-3-4 {
+        width: 75%;
+    }
+}
+
+.clear {
+    clear: both;
+}
+
+
+/*
+ * content
+ */
+
+#map {
+    height: 500px;
+    width: 100%;
+}
+
+.filter-actions {
+    font-size: 125%;
+    padding: 10px;
+}
+
+.filter-actions label {
+    margin-left: 5px;
+}
+
+.filters {
+    float: left;
+    padding-left: 5px;
+}
+
+@media (max-width: 768px) {
+    #map {
+        height: 250px;
+    }
+
+    .filters {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+.filters .icon {
+    background: url(../img/arrow_collapsed.gif);
+    cursor: pointer;
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+}
+
+.filters li.expanded .icon {
+    background: url(../img/arrow_expanded.gif);
+}
+
+.filters label {
+    border-bottom: 1px solid white;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.filters label:hover {
+    color: #F04848 !important;
+    border-bottom: 1px dashed #F04848 !important;
+}
+
+.filters .subcategories {
+    padding-left: 25px;
+}
+
+.leaflet-popup-content .place-popup-content img.place-image {
+    max-height: 500px !important;
+    max-width: 300px !important;
+}
+
+.leaflet-popup-content .place-popup-content p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+/*
+ * leaflet
+ */
+.leaflet-popup-content {
+    overflow-x: auto;
+    overflow-y: auto;
+}
