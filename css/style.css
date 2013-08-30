@@ -44,6 +44,11 @@ a:hover {
     }
 }
 
+
+/*
+ * leaflet
+ */
+
 .leaflet-popup-content .place-popup-content img.place-image {
     max-height: 500px !important;
     max-width: 300px !important;
@@ -53,11 +58,6 @@ a:hover {
     margin-top: 5px;
     margin-bottom: 5px;
 }
-
-
-/*
- * leaflet
- */
 .leaflet-popup-content {
     overflow-x: auto;
     overflow-y: auto;
