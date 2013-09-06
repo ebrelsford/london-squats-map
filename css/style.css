@@ -78,6 +78,11 @@ a:hover {
     padding-left: 40px;
 }
 
+#current-list-filter-input {
+    border: 1px solid black;
+}
+
+
 /*
  * leaflet
  */

@@ -171,6 +171,19 @@ function addHaveYouSeenList() {
 }
 
 
+function showCurrentList(list) {
+    var source = $('#current-list-template').html();
+    var template = Handlebars.compile(source);
+    $('#current-list-wrapper').html(template({
+        places: list,
+    }));
+    $('.view-squat').click(function () {
+        $('#map').data('freespacemap').openFeaturePopup($(this).data('cartodbid'));
+        return false;
+    });
+}
+
+
 function addCurrentList() {
     var query = 'SELECT * ' +
         'FROM evicted_squats_london ' +
@@ -178,17 +191,26 @@ function addCurrentList() {
             'AND the_geom IS NOT NULL ' +
         'ORDER BY name_of_squat';
 
+    var places = [];
     $.getJSON(getQueryUrl(query), function (data) {
-        var source = $('#current-list-template').html();
-        var template = Handlebars.compile(source);
-        $('#current-list-wrapper').html(template({
-            places: data.features,
-        }));
+        places = data.features;
+        showCurrentList(places);
+    });
 
-        $('.view-squat').click(function () {
-            $('#map').data('freespacemap').openFeaturePopup($(this).data('cartodbid'));
-            return false;
-        });
+    $('#current-list-filter-input').keyup(function () {
+        var filteredPlaces = places;
+        var filterText = $(this).val().toLowerCase();
+        if (filterText && filterText !== '') {
+            filteredPlaces = _.filter(places, function (place) {
+                try {
+                    return place.properties.name_of_squat.toLowerCase().indexOf(filterText) >= 0;
+                }
+                catch (e) {
+                    return false;
+                }
+            });
+        }
+        showCurrentList(filteredPlaces);
     });
 }
 
