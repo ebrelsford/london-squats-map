@@ -82,6 +82,20 @@
 
         },
 
+        openFeaturePopup: function (cartodbid) {
+            var instance = this;
+            instance.map.eachLayer(function (layer) {
+                // Wrapped in try {} because this will see all layers, even
+                // those that do not represent features
+                try {
+                    if (layer.feature.properties.cartodb_id === cartodbid) {
+                        layer.openPopup();
+                    }
+                }
+                catch (e) { }
+            });
+        }
+
     };
 
     $.fn.freespacemap = function (options) {
@@ -163,6 +177,10 @@ function addCurrentList() {
         $('#current-list-wrapper').html(template({
             places: sortedFeatures,
         }));
+
+        $('.view-squat').click(function () {
+            $('#map').data('freespacemap').openFeaturePopup($(this).data('cartodbid'));
+        });
     });
 }
 

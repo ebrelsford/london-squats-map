@@ -36,7 +36,9 @@
                         <div style="display: table-row;">
                             {{#with this.properties}}
                                 <div style="display: table-cell;">
-                                    {{name_of_squat}}
+                                    <a href="#" class="view-squat" data-cartodbid="{{cartodb_id}}">
+                                        {{name_of_squat}}
+                                    </a>
                                 </div>
                                 <div style="display: table-cell;">
                                     {{address}}
