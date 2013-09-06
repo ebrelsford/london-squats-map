@@ -63,11 +63,13 @@ a:hover {
     }
 }
 
-.have-you-seen-list {
+.have-you-seen-list,
+.current-list {
     margin-top: 25px;
 }
 
-.have-you-seen-list .heading {
+.have-you-seen-list .heading,
+.current-list .heading {
     font-weight: bold;
 }
 
