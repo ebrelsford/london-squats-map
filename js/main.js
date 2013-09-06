@@ -215,6 +215,13 @@ function addCurrentList() {
 }
 
 
+function useFullHeight() {
+    var availableHeight = $(window).height() - $('#header h1').outerHeight() - 40;
+    $('#main-content').outerHeight(availableHeight);
+    $('#map').outerHeight(availableHeight);
+}
+
+
 Handlebars.registerHelper('urlize', function (text) {
     var urlPattern = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([!\/\w\.-]*)*\/?/g;
     var toUrl = function (match) {
@@ -229,11 +236,8 @@ $(document).ready(function () {
     $('#map').freespacemap({});
     addCurrentList();
     addHaveYouSeenList();
+    useFullHeight();
 });
 
 
-$(window).smartresize(function () {
-    var availableHeight = $(window).height() - $('#header h1').outerHeight() - 40;
-    $('#main-content').outerHeight(availableHeight);
-    $('#map').outerHeight(availableHeight);
-});
+$(window).smartresize(useFullHeight);
