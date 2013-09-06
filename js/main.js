@@ -230,3 +230,10 @@ $(document).ready(function () {
     addCurrentList();
     addHaveYouSeenList();
 });
+
+
+$(window).smartresize(function () {
+    var availableHeight = $(window).height() - $('#header h1').outerHeight() - 40;
+    $('#main-content').outerHeight(availableHeight);
+    $('#map').outerHeight(availableHeight);
+});
