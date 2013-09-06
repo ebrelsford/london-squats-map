@@ -151,6 +151,21 @@ function addHaveYouSeenList() {
     });
 }
 
+function addCurrentList() {
+    var url = 'http://newagebeverages.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM evicted_squats_london WHERE (needs_more_info = false OR needs_more_info IS NULL) AND the_geom IS NOT NULL';
+    $.getJSON(url, function (data) {
+        var sortedFeatures = _.sortBy(data.features, function (f) {
+            return f.properties.name_of_squat;
+        });
+
+        var source = $('#current-list-template').html();
+        var template = Handlebars.compile(source);
+        $('#current-list-wrapper').html(template({
+            places: sortedFeatures,
+        }));
+    });
+}
+
 Handlebars.registerHelper('urlize', function (text) {
     var urlPattern = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([!\/\w\.-]*)*\/?/g;
     var toUrl = function (match) {
@@ -162,5 +177,6 @@ Handlebars.registerHelper('urlize', function (text) {
 
 $(document).ready(function () {
     $('#map').freespacemap({});
+    addCurrentList();
     addHaveYouSeenList();
 });

@@ -21,6 +21,33 @@
         <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
         <script src="js/main.js"></script>
 
+        <script id="current-list-template" type="text/x-handlebars-template">
+            <div class="current-list" style="display: table;">
+                <div class="heading" style="display: table-header-group;">
+                    <div style="display: table-cell;">
+                        name
+                    </div>
+                    <div style="display: table-cell;">
+                        address
+                    </div>
+                </div>
+                <div style="display: table-row-group;">
+                    {{#each places}}
+                        <div style="display: table-row;">
+                            {{#with this.properties}}
+                                <div style="display: table-cell;">
+                                    {{name_of_squat}}
+                                </div>
+                                <div style="display: table-cell;">
+                                    {{address}}
+                                </div>
+                            {{/with}}
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+        </script>
+
         <script id="list-template" type="text/x-handlebars-template">
             <div class="have-you-seen-list" style="display: table;">
                 <div class="heading" style="display: table-header-group;">
@@ -160,6 +187,10 @@
                             better understand the history of squatting culture 
                             in London.
                         </p>
+                        <p>
+                            Here are the squats we currently know about:
+                        </p>
+                        <div id="current-list-wrapper"></div>
                     </div>
 
                     <div class="tab-pane" id="add-a-squat">
