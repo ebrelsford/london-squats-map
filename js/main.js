@@ -150,6 +150,7 @@
 
 })(window, jQuery);
 
+
 function addHaveYouSeenList() {
     var url = 'http://newagebeverages.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM evicted_squats_london WHERE needs_more_info = true ORDER BY name_of_squat';
     $.getJSON(url, function (data) {
@@ -160,6 +161,7 @@ function addHaveYouSeenList() {
         }));
     });
 }
+
 
 function addCurrentList() {
     var url = 'http://newagebeverages.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM evicted_squats_london WHERE (needs_more_info = false OR needs_more_info IS NULL) AND the_geom IS NOT NULL ORDER BY name_of_squat';
@@ -176,6 +178,7 @@ function addCurrentList() {
     });
 }
 
+
 Handlebars.registerHelper('urlize', function (text) {
     var urlPattern = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([!\/\w\.-]*)*\/?/g;
     var toUrl = function (match) {
@@ -184,6 +187,7 @@ Handlebars.registerHelper('urlize', function (text) {
     result = text.replace(urlPattern, toUrl);
     return new Handlebars.SafeString(result);
 });
+
 
 $(document).ready(function () {
     $('#map').freespacemap({});
