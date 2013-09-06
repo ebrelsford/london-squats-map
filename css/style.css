@@ -35,6 +35,7 @@ a:hover {
 
 main {
     height: 500px;
+    max-width: 100%;
 }
 
 #right {
