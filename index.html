@@ -24,10 +24,10 @@
         <script id="current-list-template" type="text/x-handlebars-template">
             <div class="current-list" style="display: table;">
                 <div class="heading" style="display: table-header-group;">
-                    <div style="display: table-cell;">
+                    <div class="list-cell">
                         name
                     </div>
-                    <div style="display: table-cell;">
+                    <div class="list-cell">
                         address
                     </div>
                 </div>
@@ -35,12 +35,12 @@
                     {{#each places}}
                         <div style="display: table-row;">
                             {{#with this.properties}}
-                                <div style="display: table-cell;">
+                                <div class="list-cell">
                                     <a href="#" class="view-squat" data-cartodbid="{{cartodb_id}}">
                                         {{name_of_squat}}
                                     </a>
                                 </div>
-                                <div style="display: table-cell;">
+                                <div class="list-cell">
                                     {{address}}
                                 </div>
                             {{/with}}
@@ -53,10 +53,10 @@
         <script id="list-template" type="text/x-handlebars-template">
             <div class="have-you-seen-list" style="display: table;">
                 <div class="heading" style="display: table-header-group;">
-                    <div style="display: table-cell;">
+                    <div class="list-cell">
                         name
                     </div>
-                    <div style="display: table-cell;">
+                    <div class="list-cell">
                         address
                     </div>
                 </div>
@@ -64,10 +64,10 @@
                     {{#each places}}
                         <div style="display: table-row;">
                             {{#with this.properties}}
-                                <div style="display: table-cell;">
+                                <div class="list-cell">
                                     {{name_of_squat}}
                                 </div>
-                                <div style="display: table-cell;">
+                                <div class="list-cell">
                                     {{address}}
                                 </div>
                             {{/with}}
@@ -193,7 +193,7 @@
                             Here are the squats we currently know about:
                         </p>
                         <p>
-                            <input id="current-list-filter-input" placeholder="squat name" type="text" name="filter" />
+                            <input id="current-list-filter-input" placeholder="type squat name" type="text" name="filter" />
                         </p>
                         <div id="current-list-wrapper"></div>
                     </div>
