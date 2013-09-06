@@ -216,7 +216,7 @@ function addCurrentList() {
 
 
 function useFullHeight() {
-    var availableHeight = $(window).height() - $('#header h1').outerHeight() - 40;
+    var availableHeight = $(window).height() - $('header h1').outerHeight() - 40;
     $('#main-content').outerHeight(availableHeight);
     $('#map').outerHeight(availableHeight);
 }
