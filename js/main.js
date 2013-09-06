@@ -151,31 +151,23 @@
 })(window, jQuery);
 
 function addHaveYouSeenList() {
-    var url = 'http://newagebeverages.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM evicted_squats_london WHERE needs_more_info = true';
+    var url = 'http://newagebeverages.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM evicted_squats_london WHERE needs_more_info = true ORDER BY name_of_squat';
     $.getJSON(url, function (data) {
-        var sortedFeatures = _.sortBy(data.features, function (f) {
-            return f.properties.name_of_squat;
-        });
-
         var source = $('#list-template').html();
         var template = Handlebars.compile(source);
         $('#have-you-seen-list-wrapper').html(template({
-            places: sortedFeatures,
+            places: data.features,
         }));
     });
 }
 
 function addCurrentList() {
-    var url = 'http://newagebeverages.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM evicted_squats_london WHERE (needs_more_info = false OR needs_more_info IS NULL) AND the_geom IS NOT NULL';
+    var url = 'http://newagebeverages.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM evicted_squats_london WHERE (needs_more_info = false OR needs_more_info IS NULL) AND the_geom IS NOT NULL ORDER BY name_of_squat';
     $.getJSON(url, function (data) {
-        var sortedFeatures = _.sortBy(data.features, function (f) {
-            return f.properties.name_of_squat;
-        });
-
         var source = $('#current-list-template').html();
         var template = Handlebars.compile(source);
         $('#current-list-wrapper').html(template({
-            places: sortedFeatures,
+            places: data.features,
         }));
 
         $('.view-squat').click(function () {
