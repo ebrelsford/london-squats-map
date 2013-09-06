@@ -59,17 +59,15 @@
                 L.geoJson(data, {
 
                     onEachFeature: function (featureData, layer) {
-                        layer.on('click', function (e) {
-                            // precompile
-                            var source = $('#popup-template').html();
-                            var template = Handlebars.compile(source);
-                            var content = template({
-                                place: featureData
-                            });
-                            layer.bindPopup(content, {
-                                minWidth: 300,
-                                maxHeight: 450
-                            }).openPopup();
+                        // precompile
+                        var source = $('#popup-template').html();
+                        var template = Handlebars.compile(source);
+                        var content = template({
+                            place: featureData
+                        });
+                        layer.bindPopup(content, {
+                            minWidth: 300,
+                            maxHeight: 450
                         });
                     },
 
