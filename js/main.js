@@ -189,6 +189,7 @@ function addCurrentList() {
 
         $('.view-squat').click(function () {
             $('#map').data('freespacemap').openFeaturePopup($(this).data('cartodbid'));
+            return false;
         });
     });
 }
