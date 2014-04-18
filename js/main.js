@@ -48,10 +48,8 @@
             });
 
             // add tile layer
-            L.tileLayer('http://{s}.tile.cloudmade.com/' 
-                    + instance.options.leafletApiKey +'/' + instance.options.leafletStyleId
-                    + '/256/{z}/{x}/{y}.png', {
-                attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="http://cloudmade.com">CloudMade</a>',
+            L.tileLayer('https://{s}.tiles.mapbox.com/v3/ebrelsford.i0p8plmg/{z}/{x}/{y}.png', {
+                attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, Imagery &copy; <a href="http://mapbox.com">Mapbox</a>',
                 maxZoom: 18,
             }).addTo(instance.map);
 
