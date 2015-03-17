@@ -148,7 +148,7 @@
 
 
 function getQueryUrl(query) {
-    var baseUrl = 'http://newagebeverages.cartodb.com/api/v2/sql?format=GeoJSON&';
+    var baseUrl = 'https://newagebeverages.cartodb.com/api/v2/sql?format=GeoJSON&';
     return baseUrl + 'q=' + query;
 }
 
