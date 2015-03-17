@@ -53,7 +53,7 @@
                 maxZoom: 18,
             }).addTo(instance.map);
 
-            $.getJSON('http://newagebeverages.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM evicted_squats_london WHERE needs_more_info IS NULL OR needs_more_info = false', function (data) {
+            $.getJSON('https://newagebeverages.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM evicted_squats_london WHERE needs_more_info IS NULL OR needs_more_info = false', function (data) {
                 L.geoJson(data, {
 
                     onEachFeature: function (featureData, layer) {
